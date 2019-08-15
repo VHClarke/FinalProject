@@ -16,7 +16,6 @@ var white = "#ffffff";
 * at the bottom of the table.
 */
 function totalCalories(e) {
-  console.log(e)
   e.preventDefault();
   var total = 0;
   var totalCalories = document.getElementById("totalCalories");
@@ -29,7 +28,7 @@ function totalCalories(e) {
       total += calNum;
     }
   }
-  totalCalories.value = total;
+  return totalCalories.value = total;
 }
 
 
@@ -111,14 +110,15 @@ function submitIngredients(e) {
 
     submittedList.push({ingredient: ingredientValue, calories: calories})
   })
-  console.log(submittedList)
+
+  const numTotal = totalCalories(e)
 
   fetch('/userInput', {
     method: "post",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({submittedList})
+    body: JSON.stringify({submittedList, numTotal})
   })
   .then(function(response) {
     return response.json();

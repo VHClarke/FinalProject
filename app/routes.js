@@ -31,13 +31,13 @@ app.get('/userinfo', isLoggedIn, function(req, res) {
       if (err) return console.log(err)
       res.render('userinfo.ejs', {
         user : req.user,
-        ingredients: result
+        meals: result
       })
     })
 });
 
 app.post('/saveinfo', (req, res) => {
-  db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd,}, (err, result) => {
+  db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd, numTotal:req.body.numTotal}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
     res.redirect('/')
@@ -51,7 +51,8 @@ app.post('/saveinfo', (req, res) => {
       db.collection('caloriecount').save(
         {
         submittedList: req.body.submittedList,
-        date: new Date()
+        date: new Date(),
+        total: req.body.numTotal
       },
       (err, result) => {
         if (err) return console.log(err)
