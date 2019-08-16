@@ -1,13 +1,23 @@
+
+
 body{
   word-wrap:break-word;
-  background-image: url("https://cdn.pixabay.com/photo/2016/12/26/17/28/food-1932466_1280.jpg");
+  background-image: url("https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Simple-Background-Images-53.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-section {
-  width: 60px;
-  height: 300px;
+.well {
+  background-color: #f5f5f526;
+}
+
+.mainSec {
+  background-color:mediumaquamarine;
+  width: 50%
+}
+
+h1#titleColor {
+    text-align: center;
 }
 
 img{
@@ -15,16 +25,13 @@ img{
   height: 100%;
 }
 
-html {
-  font: 16px;
-}
 
 .jumbotron.text-center {
   padding: 0px;
   margin: 0%;
-  background: #e8c4aac9;
+  background: #fa8072ad;
   margin-left: 5%;
-      margin-top: 29%;ß
+  margin-top: 29%;ß
 }
 
 .container {
@@ -85,16 +92,8 @@ input.form-control {
   font-size: 3rem;
 }
 
-section {
-  width: 30%;
-  height: 915px;
-  background-color: #442c28d9;
-  position: fixed;
-  margin-left: 37%;
-}
-
 .jumbotron p {
-  color: rgb(69,116,7);
+  color: rgb(246,205,0);
   font-weight: normal;
 }
 
@@ -294,7 +293,17 @@ label {
   width: 90px;
   text-align: right;
   font-size: 19px;
-
 }
+/* ========================================== */
 
+  h1 {
+      text-align: left;
+  }
+  li {
+      font-size: 16px;
+  }
+
+  span {
+    font-size: 18px;
+}
 /* ========================================== */

@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db, ObjectId) {
 
 // normal routes ===============================================================
 
@@ -24,10 +24,20 @@ module.exports = function(app, passport, db) {
         res.redirect('/');
     });
 
+    app.get('/userprofile', isLoggedIn, function(req, res) {
+        db.collection('caloriecount').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('userprofile.ejs', {
+            user : req.user,
+            meals: result
+          })
+        })
+    });
+
+
 //  Calories Saved Page ===================================================================
 app.get('/userinfo', isLoggedIn, function(req, res) {
     db.collection('caloriecount').find().toArray((err, result) => {
-      console.log("User Info", result)
       if (err) return console.log(err)
       res.render('userinfo.ejs', {
         user : req.user,
@@ -36,18 +46,17 @@ app.get('/userinfo', isLoggedIn, function(req, res) {
     })
 });
 
-app.post('/saveinfo', (req, res) => {
-  db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd, numTotal:req.body.numTotal}, (err, result) => {
-    if (err) return console.log(err)
-    console.log('saved to database')
-    res.redirect('/')
-  })
-})
+// app.post('/saveinfo', (req, res) => {
+//   db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd, numTotal:req.body.numTotal}, (err, result) => {
+//     if (err) return console.log(err)
+//     console.log('saved to database')
+//     res.redirect('/')
+//   })
+// })
 
-// message board routes ===============================================================
+// User Info Calorie board routes ===============================================================
 
     app.post('/userInput', (req,res) => {
-      console.log("called",req.body)
       db.collection('caloriecount').save(
         {
         submittedList: req.body.submittedList,
@@ -80,27 +89,27 @@ app.post('/saveinfo', (req, res) => {
       })
     })
 
-    app.put('/decrease', (req, res) => {
-      db.collection('caloriecount')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-        $set: {
-          thumbUp:req.body.thumbDown - 1 //?
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
+
+
+    app.delete('/userInput', (req, res) => {
+      db.collection('caloriecount').findOneAndDelete({
+        total: parseInt(req.body.total),
+      },
+        (err, result) => {
+        console.log(result)
+        if (err) return res.send(500, err)
+        res.send('Meal deleted!')
       })
     })
 
-    app.delete('/messages', (req, res) => {
-      db.collection('caloriecount').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
-        if (err) return res.send(500, err)
-        res.send('Message deleted!')
-      })
-    })
+  app.put('/userprofile',(req,res) => {
+    db.collection('users').findOneAndUpdate({$set: {username: req.body.username }},(err,result) => {
+      if (err) return res.send(500, err)
+      res.send(200)
+
+    });
+
+  })
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================

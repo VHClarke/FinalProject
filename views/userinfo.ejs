@@ -12,9 +12,41 @@
   <!-- <link rel="stylesheet" type="text/css" href="Calorie Counter.css"> -->
 </head>
 <body>
-  <%= meals[0].submittedList[0].ingredient %>
-
-
+  <!-- header -->
+  <header>
+    <div id="container">
+      <nav>
+        <ul id="list">
+          <li id="top"><a href="/profile">Calculate Calories</a></li>
+          <li id="top"><a href="/userinfo">Saved Meals</a></li>
+          <li id="top"><a href="/userprofile">User Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ============================================= -->
+<section class="mainSec">
+  <% if(meals.length === 0) { %>
+    <h1>No data to display</h1>
+  <% } else { %>
+    <% for(let i = 0; i < meals.length; i++ ) { %>
+      <ul>
+        <h2>Total Calories:</h2>
+        <span> <%= meals[i].total %> </span>
+        <h2>Date:</h2>
+        <span> <%= meals[i].date %> </span>
+      <% for(let j = 0; j < meals[i].submittedList.length ; j++ ) { %>
+      <li> <%=  meals[i].submittedList[j].ingredient %> </li>
+      <span>Food Item</span>
+      <li> <%=  meals[i].submittedList[j].calories %> </li>
+      <span>Item's Calorie</span>
+      <% } %>
+      <button class="delete">delete</button>
+      <button class="edit">edit</button>
+      </ul>
+    <% } %>
+<% } %>
+</section>
 <script src="main.js"></script>
 </body>
 </html>
