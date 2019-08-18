@@ -21,6 +21,7 @@
           <li id="top"><a href="/profile">Calculate Calories</a></li>
           <li id="top"><a href="/userinfo">Saved Meals</a></li>
           <li id="top"><a href="/userprofile">User Profile</a></li>
+          <li id="top"> <a href="/">Sign Out</a> </li>
         </ul>
       </nav>
     </div>
@@ -31,8 +32,9 @@
 -->
 <section>
   <div class="table-responsive">
-    <p id="textSize" align="center" style="color: rgb(254,198,28); font-weight: bold; font-size: 24px">Simply enter the foods you've eaten and the calories per food.</p>
-    <p id="textSize" align="center" style="color: rgb(254,198,28); font-weight: bold; font-size: 24px">Then click calculate to see the total calorie count.</p>
+    <p id="textSize" align="center" style="color: rgb(113,193,233); font-weight: bold; font-size: 24px">Enter the foods eaten & the calories per food.</p>
+    <p id="textSize" align="center" style="color: rgb(247,205,84); font-weight: bold; font-size: 24px">Click calculate to see the total calorie count.</p>
+    <p id="textSize" align="center" style="color: rgb(230,74,25); font-weight: bold; font-size: 24px"> Then click on save button to save your meal.</p>
 <form id="saving" class="" action="/userInput" method="post">
       <table class="table table-curved" id="calTable">
         <thead>
@@ -74,8 +76,9 @@
         <input hidden id="array" type="text" name="holdArray" value="">
     </form>
   </div>
+  <p id="textSize" align="center" style="color: rgb(154,205,50); font-weight: bold; font-size: 24px"> Use the + button to add as many rows as you like!</p>
+  <p id="textSize" align="center" style="color: rgb(121,196,189); font-weight: bold; font-size: 24px"> Use the rotating rows to refresh the table.</p>
 </section>
-
 <script src="main.js"></script>
 </body>
 </html>

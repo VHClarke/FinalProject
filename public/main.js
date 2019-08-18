@@ -133,7 +133,8 @@ let trash = document.getElementsByClassName('delete') //delete button
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
-        var total = this.parentNode.childNodes[3].innerText
+        var total = document.querySelectorAll('.total').innerHTML
+        console.log(total);
         fetch('userInput', {
           method: 'delete',
           headers: {
@@ -148,26 +149,26 @@ Array.from(trash).forEach(function(element) {
       });
 });
 
-let editButton = document.getElementById('editButton')
-let editInput = document.getElementById('editInput')
-
- editButton.addEventListener('click', function(){
-   editInput.disabled = false;
-   editInput.focus();
- })
-
- let saveButton = document.getElementById('saveButton')
-
- saveButton.addEventListener('click', function(){
-   fetch('userprofile', {
-     method: 'PUT',
-     headers: {
-       'Content-Type': 'application/json'
-     },
-     body: JSON.stringify({
-       'username': editInput.value
-     })
-   }).then(function (response) {
-     window.location.reload()
-   })
- })
+// let editButton = document.getElementById('editButton')
+// let editInput = document.getElementById('editInput')
+//
+//  editButton.addEventListener('click', function(){
+//    editInput.disabled = false;
+//    editInput.focus();
+//  })
+//
+//  let saveButton = document.getElementById('saveButton')
+//
+//  saveButton.addEventListener('click', function(){
+//    fetch('userprofile', {
+//      method: 'PUT',
+//      headers: {
+//        'Content-Type': 'application/json'
+//      },
+//      body: JSON.stringify({
+//        'username': editInput.value
+//      })
+//    }).then(function (response) {
+//      window.location.reload()
+//    })
+//  })

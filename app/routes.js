@@ -46,13 +46,13 @@ app.get('/userinfo', isLoggedIn, function(req, res) {
     })
 });
 
-// app.post('/saveinfo', (req, res) => {
-//   db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd, numTotal:req.body.numTotal}, (err, result) => {
-//     if (err) return console.log(err)
-//     console.log('saved to database')
-//     res.redirect('/')
-//   })
-// })
+app.post('/saveinfo', (req, res) => {
+  db.collection('savedFood').save({message: req.body.msg,funds:req.body.fnd, numTotal:req.body.numTotal}, (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+    res.redirect('/')
+  })
+})
 
 // User Info Calorie board routes ===============================================================
 
@@ -71,8 +71,6 @@ app.get('/userinfo', isLoggedIn, function(req, res) {
     })
 
 
-
-
     app.put('/userInput', (req, res) => {
       db.collection('caloriecount')
       .findOneAndUpdate({name: req.body.foodInsert, foodCal: req.body.foodCal}, {
@@ -88,8 +86,6 @@ app.get('/userinfo', isLoggedIn, function(req, res) {
         res.send(result)
       })
     })
-
-
 
     app.delete('/userInput', (req, res) => {
       db.collection('caloriecount').findOneAndDelete({

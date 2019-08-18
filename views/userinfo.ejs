@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <!-- <link rel="stylesheet" type="text/css" href="Calorie Counter.css"> -->
 </head>
+
 <body>
   <!-- header -->
   <header>
@@ -20,33 +22,31 @@
           <li id="top"><a href="/profile">Calculate Calories</a></li>
           <li id="top"><a href="/userinfo">Saved Meals</a></li>
           <li id="top"><a href="/userprofile">User Profile</a></li>
+          <li id="top"><a href="/">Sign Out</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <!-- ============================================= -->
-<section class="mainSec">
-  <% if(meals.length === 0) { %>
+  <section class="mainSec">
+    <% if(meals.length === 0) { %>
     <h1>No data to display</h1>
-  <% } else { %>
+    <% } else { %>
     <% for(let i = 0; i < meals.length; i++ ) { %>
-      <ul>
-        <h2>Total Calories:</h2>
-        <span> <%= meals[i].total %> </span>
-        <h2>Date:</h2>
-        <span> <%= meals[i].date %> </span>
+    <ul>
+      <h2>Total Calories: <span class="total"> <%= meals[i].total %> </span></h2>
+      <h2>Date: <span> <%= meals[i].date %> </span></h2>
       <% for(let j = 0; j < meals[i].submittedList.length ; j++ ) { %>
-      <li> <%=  meals[i].submittedList[j].ingredient %> </li>
-      <span>Food Item</span>
-      <li> <%=  meals[i].submittedList[j].calories %> </li>
-      <span>Item's Calorie</span>
+      <li> Food Item: <%=  meals[i].submittedList[j].ingredient %> </li>
+      <li> Item Calories: <%=  meals[i].submittedList[j].calories %> </li>
       <% } %>
       <button class="delete">delete</button>
       <button class="edit">edit</button>
-      </ul>
+    </ul>
     <% } %>
-<% } %>
-</section>
-<script src="main.js"></script>
+    <% } %>
+  </section>
+  <script src="/main.js"></script>
 </body>
+
 </html>
