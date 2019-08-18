@@ -6,14 +6,19 @@ module.exports = function(app, passport, db, ObjectId) {
     // app.get('/', function(req, res) {
     //     res.render('index.ejs');
     // });
+
     app.get('/', function(req, res) {
        db.collection('caloriecount').find().toArray((err, result) => {
          if (err) return console.log(err)
          res.render('index.ejs', {
            user : req.user,
+           messages: result
          })
        })
      });
+
+
+
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
         db.collection('caloriecount').find().toArray((err, result) => {
