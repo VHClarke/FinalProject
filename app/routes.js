@@ -3,19 +3,19 @@ module.exports = function(app, passport, db, ObjectId) {
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
-    // app.get('/', function(req, res) {
-    //     res.render('index.ejs');
-    // });
-
     app.get('/', function(req, res) {
-       db.collection('caloriecount').find().toArray((err, result) => {
-         if (err) return console.log(err)
-         res.render('index.ejs', {
-           user : req.user,
-           messages: result
-         })
-       })
-     });
+        res.render('index.ejs');
+    });
+    //
+    // app.get('/', function(req, res) {
+    //    db.collection('caloriecount').find().toArray((err, result) => {
+    //      if (err) return console.log(err)
+    //      res.render('index.ejs', {
+    //        user : req.user,
+    //        messages: result
+    //      })
+    //    })
+    //  });
 
 
 
