@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>21 Savage Fan Site</title>
+    <title>Fit Foodie</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
@@ -11,6 +11,7 @@
     <div id="container">
       <nav>
         <ul id="list">
+          <li id="top"><a href="/bmi">BMI Calculator</a></li>
           <li id="top"><a href="/profile">Calculate Calories</a></li>
           <li id="top"><a href="/userinfo">Saved Meals</a></li>
           <li id="top"><a href="/userprofile">User Profile</a></li>
@@ -34,11 +35,11 @@
                 <h3><span class="fa fa-user"></span> Local</h3>
 
                 <% if (user.local.email) { %>
+                  <input id="editInput" type="text" value=<%= user.local.email %>
                     <p>
-                        <strong>email</strong>:<input id="editInput" type="text" disabled=true value=<%= user.local.email %> ><br>
-                        <button id="editButton">Edit</button>
-                        <button type="button" name="button">Save</button>
+                        <button class="edit" id="editButton">Edit</button>
                     </p>
+                      <!-- <button class="edit" id="editButton">Edit</button> -->
                 <% } else { %>
                     <a href="/connect/local" class="btn btn-default">Connect Local</a>
                 <% } %>

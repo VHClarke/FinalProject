@@ -133,8 +133,7 @@ let trash = document.getElementsByClassName('delete') //delete button
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
-        var total = document.querySelectorAll('.total').innerHTML
-        console.log(total);
+        var total = element.parentNode.getElementsByTagName("span")[0].innerHTML
         fetch('userInput', {
           method: 'delete',
           headers: {
@@ -149,26 +148,29 @@ Array.from(trash).forEach(function(element) {
       });
 });
 
-// let editButton = document.getElementById('editButton')
-// let editInput = document.getElementById('editInput')
-//
-//  editButton.addEventListener('click', function(){
-//    editInput.disabled = false;
-//    editInput.focus();
-//  })
-//
-//  let saveButton = document.getElementById('saveButton')
-//
-//  saveButton.addEventListener('click', function(){
-//    fetch('userprofile', {
-//      method: 'PUT',
-//      headers: {
-//        'Content-Type': 'application/json'
-//      },
-//      body: JSON.stringify({
-//        'username': editInput.value
-//      })
-//    }).then(function (response) {
-//      window.location.reload()
-//    })
-//  })
+let editButtons = document.getElementsByClassName("edit") //delete edit
+
+
+Array.from(editButtons).forEach(function(element) {
+      element.addEventListener('click', function(){
+        var enteredEmail = document.querySelector('#editInput').value
+
+        fetch('changeEmail', {
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'enteredEmail': enteredEmail
+          })
+        }).then(function (response) {
+          window.location.reload()
+        })
+      });
+});
+
+// =============================== bmi
+function calcBMI() {
+  var weight = document.bmiform.pounds.value, height = document.bmiform.inches.value;
+  document.bmiform.bmi.value = parseInt((weight * 703) / (height * height));
+}

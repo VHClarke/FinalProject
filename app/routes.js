@@ -17,7 +17,11 @@ module.exports = function(app, passport, db, ObjectId) {
     //    })
     //  });
 
+// BMI calculator =====================================
 
+app.get('/bmi', function(req, res) {
+    res.render('bmi.ejs');
+});
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -47,9 +51,12 @@ module.exports = function(app, passport, db, ObjectId) {
     });
 
 
-//  Calories Saved Page ===================================================================
+//  User Calories Saved Page ===================================================================
 app.get('/userinfo', isLoggedIn, function(req, res) {
-    db.collection('caloriecount').find().toArray((err, result) => {
+  let uId = req.session.passport.user
+
+    db.collection('caloriecount').find({"poster":uId}).toArray((err, result) => {
+      console.log(result);
       if (err) return console.log(err)
       res.render('userinfo.ejs', {
         user : req.user,
@@ -66,14 +73,15 @@ app.post('/saveinfo', (req, res) => {
   })
 })
 
-// User Info Calorie board routes ===============================================================
+// User Info Calorie calculator board routes ===============================================================
 
     app.post('/userInput', (req,res) => {
       db.collection('caloriecount').save(
         {
         submittedList: req.body.submittedList,
         date: new Date(),
-        total: req.body.numTotal
+        total: req.body.numTotal,
+        poster: req.session.passport.user
       },
       (err, result) => {
         if (err) return console.log(err)
@@ -89,6 +97,23 @@ app.post('/saveinfo', (req, res) => {
         $set: {
           name: req.body.foodInsert,
            foodCal: req.body.foodCal
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+
+    app.put('/changeEmail', (req, res) => {
+      let uId = ObjectId(req.session.passport.user)
+      let email = req.body.enteredEmail
+      db.collection('users')
+      .findOneAndUpdate({"_id": uId}, {
+        $set: {
+          "local.email": email
         }
       }, {
         sort: {_id: -1},

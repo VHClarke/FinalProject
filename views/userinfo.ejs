@@ -19,6 +19,7 @@
     <div id="container">
       <nav>
         <ul id="list">
+          <li id="top"><a href="/bmi">BMI Calculator</a></li>
           <li id="top"><a href="/profile">Calculate Calories</a></li>
           <li id="top"><a href="/userinfo">Saved Meals</a></li>
           <li id="top"><a href="/userprofile">User Profile</a></li>
@@ -33,15 +34,14 @@
     <h1>No data to display</h1>
     <% } else { %>
     <% for(let i = 0; i < meals.length; i++ ) { %>
-    <ul>
-      <h2>Total Calories: <span class="total"> <%= meals[i].total %> </span></h2>
+    <ul class="mealList">
+      <h2>Total Calories: <span class="total"> <%= meals[i].total %></span></h2>
       <h2>Date: <span> <%= meals[i].date %> </span></h2>
       <% for(let j = 0; j < meals[i].submittedList.length ; j++ ) { %>
       <li> Food Item: <%=  meals[i].submittedList[j].ingredient %> </li>
       <li> Item Calories: <%=  meals[i].submittedList[j].calories %> </li>
       <% } %>
       <button class="delete">delete</button>
-      <button class="edit">edit</button>
     </ul>
     <% } %>
     <% } %>

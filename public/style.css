@@ -20,7 +20,6 @@ body{
 }
 
 .mainSec {
-  background-color:mediumaquamarine;
   width: 50%;
   margin-left: 25%;
 }
@@ -127,6 +126,8 @@ a#buttonChangeTwo {
     color: white;
 }
 
+
+
 /* Header/Nav bar ---------------------------------- */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -141,7 +142,7 @@ h1 {
 
 h3 {
 	font-size: 30px;
-	text-align: center;
+	text-align: left;
 	color: #FFF;
 }
 
@@ -307,10 +308,10 @@ label {
   }
 
   li {
-    font-size: 17px;
-    font-family: sans-serif;
-    color: mediumblue;
-}
+      font-size: 26px;
+      font-family: sans-serif;
+      color: snow;
+  }
 
   span {
     font-size: 18px;
@@ -320,5 +321,89 @@ h2 {
     font-style: italic;
     font-family: auto;
     color: white !important;
+    font-size: 30px;
+background-color: tomato !important;
+padding: 3px !important;
+margin-left: -41px !important;
+margin-right: -1px !important;
+width: 57%;
+border-radius: 10px;
 }
-/* ========================================== */
+
+
+.col-sm-6 {
+    position: absolute;
+    margin-left: 2%;
+}
+
+ul.mealList {
+    border: 6px solid mintcream;
+    background-color: pink;
+    border-radius: 22px;
+}
+/* ========================================== BMI */
+
+fieldset {
+    width: 50%;
+    margin: 25px -14% 0 50px;
+    border: 1px solid #999999;
+    box-shadow: 1px 1px #cccccc;
+    padding: 10px;
+}
+
+label {
+	float: left;
+	width: 140px;
+	display: block;
+	clear: left;
+	text-align: right;
+	padding-right: 10px;
+	margin-top: 10px;
+}
+
+button {
+	margin-left: 150px;
+}
+
+input {
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+    width: 31%;
+    padding: 1%;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#bmi_label {
+	width: 200px;
+}
+
+#bmi {
+	width: 66px;
+}
+
+#intro {
+    width: 63%;
+    padding: 40px;
+    border: 1px solid #999999;
+    box-shadow: 1px 1px #cccccc;
+    text-align: center;
+    margin-right: -20%;
+}
+
+section.bmiCal {
+    width: 55%;
+    text-align: -webkit-right;
+}
+
+p#intro {
+    color: turquoise;
+}
+
+legend {
+text-align: center !important;
+    color: tomato;
+        font-size: 35px !important;
+}
