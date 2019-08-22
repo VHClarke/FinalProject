@@ -343,6 +343,11 @@ ul.mealList {
 }
 /* ========================================== BMI */
 
+img {
+    width: 40%;
+    margin-right: -120px;
+    margin-top: 17px;
+}
 fieldset {
     width: 50%;
     margin: 25px -14% 0 50px;
