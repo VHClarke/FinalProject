@@ -342,8 +342,7 @@ ul.mealList {
     border-radius: 22px;
 }
 /* ========================================== BMI */
-
-img {
+.bmiPIC {
     width: 40%;
     margin-right: -120px;
     margin-top: 17px;
